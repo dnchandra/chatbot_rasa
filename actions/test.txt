@@ -1,0 +1,37 @@
+from typing import Any, Text, Dict, List
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+
+class ActionProvideInfrastructureOptions(Action):
+    def name(self) -> Text:
+        return "action_provide_infrastructure_options"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # Send a message with a custom payload for a dropdown
+        message = {
+            "payload": "dropDown",
+            "data": [
+                {"label": "Cloud Infra", "value": "/choose_infrastructure{\"infrastructure\":\"cloud_infra\"}"},
+                {"label": "Physical Infra", "value": "/choose_infrastructure{\"infrastructure\":\"physical_infra\"}"}
+            ]
+        }
+        dispatcher.utter_message(json_message=message)
+        return []
+
+class ActionProvideCloudInfraOptions(Action):
+    def name(self) -> Text:
+        return "action_provide_cloud_infra_options"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # Provide cloud infrastructure options as buttons
+        buttons = [
+            {"title": "Public Cloud", "payload": "/choose_cloud_infra{\"cloud_infra\":\"public_cloud\"}"},
+            {"title": "Private Cloud", "payload": "/choose_cloud_infra{\"cloud_infra\":\"private_cloud\"}"},
+            {"title": "Hybrid Cloud", "payload": "/choose_cloud_infra{\"cloud_infra\":\"hybrid_cloud\"}"}
+        ]
+        dispatcher.utter_message(text="Please choose a cloud infrastructure option:", buttons=buttons)
+        return []

@@ -1,0 +1,45 @@
+from typing import Any, Text, Dict, List
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+
+class ActionGreet(Action):
+    def name(self) -> Text:
+        return "action_greet"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(response="utter_greet")
+        return []
+
+class ActionHelpPrompt(Action):
+    def name(self) -> Text:
+        return "action_help_prompt"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(response="utter_help_prompt")
+        return []
+
+class ActionAccessButtons(Action):
+    def name(self) -> Text:
+        return "action_access_buttons"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        buttons = [
+            {"title": "Application 1", "payload": "/application1"},
+            {"title": "Application 2", "payload": "/application2"},
+            {"title": "Application 3", "payload": "/application3"}
+        ]
+        dispatcher.utter_message(text="Please select one of the services you need:", buttons=buttons)
+        return []
+
+class ActionDocumentationDropdown(Action):
+    def name(self) -> Text:
+        return "action_documentation_dropdown"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        options = [
+            {"title": "Document 1", "payload": "/document1"},
+            {"title": "Document 2", "payload": "/document2"},
+            {"title": "Document 3", "payload": "/document3"}
+        ]
+        dispatcher.utter_message(text="Choose below documentation:", buttons=options)
+        return []

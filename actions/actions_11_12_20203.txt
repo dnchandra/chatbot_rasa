@@ -1,0 +1,41 @@
+from typing import Any, Text, Dict, List
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+
+class ActionProvideOptions(Action):
+    def name(self) -> Text:
+        return "action_provide_options"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        service = tracker.get_slot('service')
+
+        if service == 'infrastructure':
+            data = [
+                {"label": "Public Cloud", "value": "/choose_infrastructure{\"selection\":\"public_cloud\"}"},
+                {"label": "Private Cloud", "value": "/choose_infrastructure{\"selection\":\"private_cloud\"}"},
+                {"label": "Hybrid Cloud", "value": "/choose_infrastructure{\"selection\":\"hybrid_cloud\"}"}
+            ]
+        elif service == 'applications':
+            data = [
+                {"label": "Onboarding", "value": "/choose_application{\"selection\":\"onboarding\"}"},
+                {"label": "Decomm", "value": "/choose_application{\"selection\":\"decomm\"}"},
+                {"label": "App Status", "value": "/choose_application{\"selection\":\"app_status\"}"}
+            ]
+        elif service == 'management':
+            data = [
+                {"label": "Application Dashboard", "value": "/choose_management{\"selection\":\"app_dashboard\"}"},
+                {"label": "Infrastructure Dashboard", "value": "/choose_management{\"selection\":\"infra_dashboard\"}"}
+            ]
+        else:
+            data = []
+
+        if data:
+            message = {"payload": "dropDown", "data": data}
+            dispatcher.utter_message(json_message=message)
+        else:
+            dispatcher.utter_message(text="Please choose a service:")
+
+        return []

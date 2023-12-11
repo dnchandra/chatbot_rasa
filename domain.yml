@@ -1,0 +1,55 @@
+version: '3.1'
+
+intents:
+  - greet
+  - goodbye
+  - ask_help
+  - choose_service
+  - choose_infrastructure
+  - choose_cloud_infra
+
+entities:
+  - service
+  - infrastructure
+  - cloud_infra
+
+slots:
+  service:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: service
+  infrastructure:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: infrastructure
+  cloud_infra:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: cloud_infra
+
+responses:
+  utter_greet:
+    - text: "Hi there! How can I assist you today?"
+
+  utter_goodbye:
+    - text: "Goodbye! If you need any more help, just let me know."
+
+  utter_ask_service:
+    - text: "How may I help you today? Please choose one of the services you need:"
+      buttons:
+        - title: "Infrastructure"
+          payload: '/choose_service{"service":"infrastructure"}'
+        - title: "Applications"
+          payload: '/choose_service{"service":"applications"}'
+        - title: "Management"
+          payload: '/choose_service{"service":"management"}'
+
+actions:
+  - action_provide_infrastructure_options
+  - action_provide_cloud_infra_options

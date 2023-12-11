@@ -1,0 +1,39 @@
+# actions.py
+from typing import Any, Text, Dict, List
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+
+class ActionSendServiceOptions(Action):
+    def name(self) -> Text:
+        return "action_send_service_options"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        options = ["Infrastructure Services", "Management Services", "Application Services"]
+        dispatcher.utter_message(
+            text="Sure, I can help you with the following services:",
+            buttons=[
+                {"title": option, "payload": f'/inform{{"service_type": "{option.split()[0]}"}}'}
+                for option in options
+            ],
+        )
+        return []
+
+class ActionHandleServiceSelection(Action):
+    def name(self) -> Text:
+        return "action_handle_service_selection"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        selected_option = tracker.latest_message.get('text', '')
+        options = ["Infrastructure Services", "Management Services", "Application Services"]
+
+        if selected_option in options:
+            dispatcher.utter_message(text=f"You have selected {selected_option}.")
+            dispatcher.utter_message(template="utter_confirm_selection")
+        else:
+            dispatcher.utter_message(text="Invalid selection. Please choose a valid option.")
+
+        return []

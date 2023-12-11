@@ -1,0 +1,16 @@
+version: '3.1'
+stories:
+  - story: User greets and asks for help
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_help
+      - action: utter_ask_service
+      - intent: choose_service
+        entities:
+          - service: "infrastructure"
+      - action: action_provide_infrastructure_options
+      - intent: choose_infrastructure
+        entities:
+          - infrastructure: "cloud_infra"
+      - action: action_provide_cloud_infra_options

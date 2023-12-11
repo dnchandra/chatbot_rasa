@@ -1,0 +1,37 @@
+version: '3.1'
+nlu:
+  - intent: greet
+    examples: |
+      - Hi
+      - Hello
+      - Hey there
+
+  - intent: goodbye
+    examples: |
+      - Bye
+      - Goodbye
+      - See you later
+
+  - intent: ask_help
+    examples: |
+      - I need help
+      - Can you assist me?
+      - Help please
+      - Support
+
+  - intent: choose_service
+    examples: |
+      - I want infrastructure services
+      - Show me applications
+      - I need management options
+
+  - intent: choose_infrastructure
+    examples: |
+      - I choose Cloud Infra
+      - Give me options for Physical Infra
+
+  - intent: choose_cloud_infra
+    examples: |
+      - I want Public Cloud
+      - Show me Private Cloud options
+      - What is Hybrid Cloud?
