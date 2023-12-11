@@ -15,6 +15,7 @@ stories:
           - infrastructure: "cloud_infra"
       - action: action_provide_cloud_infra_options
 
+  - story: Restart conversation
     steps:
       - intent: goodbye
       - action: utter_goodbye
