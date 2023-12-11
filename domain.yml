@@ -53,3 +53,4 @@ responses:
 actions:
   - action_provide_infrastructure_options
   - action_provide_cloud_infra_options
+  - action_restart

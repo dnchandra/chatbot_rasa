@@ -14,3 +14,8 @@ stories:
         entities:
           - infrastructure: "cloud_infra"
       - action: action_provide_cloud_infra_options
+
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+      - action: action_restart
