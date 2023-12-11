@@ -58,5 +58,3 @@ class ActionRestart(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         return [Restarted()]
     
-print(Tracker.slots)
-print(Tracker.events)
