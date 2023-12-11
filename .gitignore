@@ -1,0 +1,5 @@
+# ignore ALL .log files
+.rasa
+.tar*
+# ignore ALL files in ANY directory named temp
+temp/
