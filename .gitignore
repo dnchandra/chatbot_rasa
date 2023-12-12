@@ -6,3 +6,4 @@ temp/
 models/
 actions/__pycache__/
 __pycache__
+*.log
