@@ -4,4 +4,4 @@
 # ignore ALL files in ANY directory named temp
 temp/
 models/
-actions\__pycache__/
+actions/__pycache__/
