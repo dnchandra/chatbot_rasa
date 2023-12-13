@@ -1,6 +1,50 @@
-version: '3.1'
-rules:
-  - rule: Say goodbye anytime the user says goodbye
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
+version: "3.1"
+
+- rule: User asks for support
+  condition:
+  - intent: ask_for_support
+  steps:
+  - action: action_provide_services
+  - action: action_reset_state
+
+- rule: User selects Infrastructure
+  condition:
+  - intent: select_infrastructure
+  steps:
+  - action: action_select_infrastructure
+  - action: action_reset_state
+
+- rule: User selects Report Production Issue
+  condition:
+  - intent: report_production_issue
+  steps:
+  - action: action_report_production_issue
+  - action: action_reset_state
+
+- rule: User selects Cloud VM provisioning
+  condition:
+  - intent: cloud_vm_provisioning
+  steps:
+  - action: action_cloud_vm_provisioning
+  - action: action_reset_state
+
+- rule: User selects Documentation
+  condition:
+  - intent: select_documentation
+  steps:
+  - action: action_select_documentation
+  - action: action_reset_state
+
+- rule: User selects Shift Rota
+  condition:
+  - intent: provide_shift_rota
+  steps:
+  - action: action_provide_shift_rota
+  - action: action_reset_state
+
+- rule: User selects Support Contacts
+  condition:
+  - intent: provide_support_contacts
+  steps:
+  - action: action_provide_support_contacts
+  - action: action_reset_state

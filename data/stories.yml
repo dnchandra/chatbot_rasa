@@ -1,22 +1,41 @@
-version: '3.1'
-stories:
-  - story: User greets and asks for help
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ask_help
-      - action: utter_ask_service
-      - intent: choose_service
-        entities:
-          - service: "infrastructure"
-      - action: action_provide_infrastructure_options
-      - intent: choose_infrastructure
-        entities:
-          - infrastructure: "cloud_infra"
-      - action: action_provide_cloud_infra_options
+version: "3.1"
 
-  - story: Restart conversation
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
-      - action: action_restart
+stories:
+- story: User greets and asks for support
+  steps:
+  - intent: greet
+  - action: utter_ask_for_support
+
+- story: User selects infrastructure options
+  steps:
+  - intent: ask_for_support
+  - action: utter_ask_for_support
+  - intent: select_infrastructure
+  - action: action_select_infrastructure
+
+- story: User selects documentation options
+  steps:
+  - intent: ask_for_support
+  - action: utter_ask_for_support
+  - intent: select_documentation
+  - action: action_select_documentation
+
+- story: User selects cloud VM provisioning
+  steps:
+  - intent: cloud_vm_provisioning
+  - action: action_cloud_vm_provisioning
+
+- story: User selects report production issue
+  steps:
+  - intent: report_production_issue
+  - action: action_report_production_issue
+
+- story: User selects shift rota
+  steps:
+  - intent: shift_rota
+  - action: action_provide_shift_rota
+
+- story: User selects support contacts
+  steps:
+  - intent: support_contacts
+  - action: action_provide_support_contacts

@@ -1,37 +1,43 @@
-version: '3.1'
+version: "3.1"
+
 nlu:
-  - intent: greet
-    examples: |
-      - Hi
-      - Hello
-      - Hey there
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - hey
 
-  - intent: goodbye
-    examples: |
-      - Bye
-      - Goodbye
-      - See you later
+- intent: ask_for_support
+  examples: |
+    - help
+    - support
 
-  - intent: ask_help
-    examples: |
-      - I need help
-      - Can you assist me?
-      - Help please
-      - Support
+- intent: select_infrastructure
+  examples: |
+    - /select_infrastructure
+    - infrastructure
 
-  - intent: choose_service
-    examples: |
-      - I want infrastructure services
-      - Show me applications
-      - I need management options
+- intent: select_documentation
+  examples: |
+    - /select_documentation
+    - documentation
 
-  - intent: choose_infrastructure
-    examples: |
-      - I choose Cloud Infra
-      - Give me options for Physical Infra
+- intent: cloud_vm_provisioning
+  examples: |
+    - /provide_cloud_vm_provisioning
+    - cloud vm provisioning
 
-  - intent: choose_cloud_infra
-    examples: |
-      - I want Public Cloud
-      - Show me Private Cloud options
-      - What is Hybrid Cloud?
+- intent: report_production_issue
+  examples: |
+    - /provide_report_production_issue
+    - report production issue
+
+- intent: shift_rota
+  examples: |
+    - /provide_shift_rota
+    - shift rota
+
+- intent: support_contacts
+  examples: |
+    - /provide_support_contacts
+    - support contacts

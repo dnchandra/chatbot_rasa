@@ -1,56 +1,42 @@
-version: '3.1'
+version: "3.1"
 
 intents:
   - greet
-  - goodbye
-  - ask_help
-  - choose_service
-  - choose_infrastructure
-  - choose_cloud_infra
-
-entities:
-  - service
-  - infrastructure
-  - cloud_infra
-
-slots:
-  service:
-    type: text
-    influence_conversation: false
-    mappings:
-      - type: from_entity
-        entity: service
-  infrastructure:
-    type: text
-    influence_conversation: false
-    mappings:
-      - type: from_entity
-        entity: infrastructure
-  cloud_infra:
-    type: text
-    influence_conversation: false
-    mappings:
-      - type: from_entity
-        entity: cloud_infra
-
-responses:
-  utter_greet:
-    - text: "Hi there! How can I assist you today?"
-
-  utter_goodbye:
-    - text: "Goodbye! If you need any more help, just let me know."
-
-  utter_ask_service:
-    - text: "How may I help you today? Please choose one of the services you need:"
-      buttons:
-        - title: "Infrastructure"
-          payload: '/choose_service{"service":"infrastructure"}'
-        - title: "Applications"
-          payload: '/choose_service{"service":"applications"}'
-        - title: "Management"
-          payload: '/choose_service{"service":"management"}'
+  - ask_for_support
+  - select_infrastructure
+  - select_documentation
+  - cloud_vm_provisioning
+  - report_production_issue
+  - shift_rota
+  - support_contacts
 
 actions:
-  - action_provide_infrastructure_options
-  - action_provide_cloud_infra_options
-  - action_restart
+  - action_ask_for_support
+  - action_select_infrastructure
+  - action_select_documentation
+  - action_cloud_vm_provisioning
+  - action_report_production_issue
+  - action_provide_shift_rota
+  - action_provide_support_contacts
+
+responses:
+  utter_ask_for_support:
+    - text: "How may I assist you? Please select below services which I offer.\nInfrastructure\nSupport Documentation"
+
+  utter_select_infrastructure:
+    - text: "You have selected Infrastructure.\nReport Production Issue\nCloud VM provisioning"
+
+  utter_select_documentation:
+    - text: "You have selected Support Documentation.\nShift Rota\nSupport Contacts"
+
+  utter_cloud_vm_provisioning:
+    - text: "You have selected Cloud VM provisioning."
+
+  utter_report_production_issue:
+    - text: "You have selected Infrastructure.\nReport Production Issue."
+
+  utter_provide_shift_rota:
+    - text: "You can find the Shift Rota information [here](https://chat.bing.com)."
+
+  utter_provide_support_contacts:
+    - text: "You can find the Support Contacts [here](https://chat.openai.com)."
