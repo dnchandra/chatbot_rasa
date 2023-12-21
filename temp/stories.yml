@@ -1,0 +1,79 @@
+- story: user asks for support
+  steps:
+    - intent: support
+    - action: action_greet
+
+- story: user selects a service
+  steps:
+    - intent: select_service
+    - action: action_ask_services
+
+- story: user selects Infrastructure
+  steps:
+    - intent: select_service
+      entities:
+        - service: "Infrastructure"
+    - action: action_display_infrastructure_options
+
+- story: user selects Application
+  steps:
+    - intent: select_service
+      entities:
+        - service: "Application"
+    - action: action_display_application_options
+
+- story: user selects Support Documentation
+  steps:
+    - intent: select_service
+      entities:
+        - service: "Support Documentation"
+    - action: action_display_support_docs_options
+
+- story: user selects Report Production Issue under Infrastructure
+  steps:
+    - intent: report_issue
+      entities:
+        - service: "Infrastructure"
+    - action: action_report_production_issue
+
+- story: user selects Cloud VM Provisioning under Infrastructure
+  steps:
+    - intent: vm_provisioning
+      entities:
+        - service: "Infrastructure"
+    - action: action_cloud_vm_provisioning
+
+- story: user selects Application Onboarding under Application
+  steps:
+    - intent: onboarding
+      entities:
+        - service: "Application"
+    - action: action_application_onboarding
+
+- story: user selects Capacity Planning under Application
+  steps:
+    - intent: capacity_planning
+      entities:
+        - service: "Application"
+    - action: action_capacity_planning
+
+- story: user selects Firewall Request under Application
+  steps:
+    - intent: firewall_request
+      entities:
+        - service: "Application"
+    - action: action_firewall_request
+
+- story: user selects Shift Rota under Support Documentation
+  steps:
+    - intent: shift_rota
+      entities:
+        - service: "Support Documentation"
+    - action: action_shift_rota
+
+- story: user selects Support Contacts under Support Documentation
+  steps:
+    - intent: support_contacts
+      entities:
+        - service: "Support Documentation"
+    - action: action_support_contacts
