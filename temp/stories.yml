@@ -1,48 +1,125 @@
-- story: user selects a service
+version: "3.1"
+
+nlu:
+- intent: support
+  examples: |
+    - Help
+    - Support
+    - I need assistance
+    - Can you help me?
+
+- intent: select_service_infrastructure
+  examples: |
+    - I want to select Infrastructure
+    - Choose Infrastructure
+    - Infrastructure
+
+- intent: select_service_application
+  examples: |
+    - I want to select Application
+    - Choose Application
+    - Application
+
+- intent: select_service_support
+  examples: |
+    - I want to select Support Documentation
+    - Choose Support Documentation
+    - Support Documentation
+
+- intent: inform_infrastructure
+  examples: |
+    - I am interested in Infrastructure
+    - Tell me about Infrastructure
+    - Infrastructure details
+
+- intent: inform_application
+  examples: |
+    - I am interested in Application
+    - Tell me about Application
+    - Application details
+
+- intent: inform_support
+  examples: |
+    - I am interested in Support Documentation
+    - Tell me about Support Documentation
+    - Support Documentation details
+
+- intent: report_issue
+  examples: |
+    - Report a production issue
+    - Production issue
+    - Issue with production
+
+- intent: vm_provisioning
+  examples: |
+    - Cloud VM provisioning
+    - Request VM
+    - Provision VM
+
+- intent: onboarding
+  examples: |
+    - Application onboarding
+    - Onboard application
+    - New application setup
+
+- intent: capacity_planning
+  examples: |
+    - Capacity planning
+    - Plan capacity
+    - Scale application
+
+- intent: firewall_request
+  examples: |
+    - Firewall request
+    - Request firewall access
+    - Firewall setup
+
+- intent: shift_rota
+  examples: |
+    - Shift rota
+    - Rotation schedule
+    - Support shifts
+
+- intent: support_contacts
+  examples: |
+    - Support contacts
+    - Contact support
+    - How to reach support
+
+stories:
+- story: user asks for support
   steps:
-    - intent: select_service
-    - action: action_ask_services
+    - intent: support
+    - action: action_greet
 
 - story: user selects Infrastructure
   steps:
-    - intent: select_service
-      entities:
-        - service: "Infrastructure"
+    - intent: select_service_infrastructure
     - action: action_display_infrastructure_options
 
 - story: user selects Application
   steps:
-    - intent: select_service
-      entities:
-        - service: "Application"
+    - intent: select_service_application
     - action: action_display_application_options
 
 - story: user selects Support Documentation
   steps:
-    - intent: select_service
-      entities:
-        - service: "Support Documentation"
+    - intent: select_service_support
     - action: action_display_support_docs_options
 
 - story: user informs about Infrastructure
   steps:
-    - intent: inform
-      entities:
-        - service: "Infrastructure"
+    - intent: inform_infrastructure
     - action: action_display_infrastructure_options
 
 - story: user informs about Application
   steps:
-    - intent: inform
-      entities:
-        - service: "Application"
+    - intent: inform_application
     - action: action_display_application_options
 
 - story: user informs about Support Documentation
   steps:
-    - intent: inform
-      entities:
-        - service: "Support Documentation"
+    - intent: inform_support
     - action: action_display_support_docs_options
 
 - story: user selects Report Production Issue under Infrastructure
