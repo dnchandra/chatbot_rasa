@@ -1,0 +1,54 @@
+- intent: support
+  examples: |
+    - Help
+    - Support
+    - I need assistance
+    - Can you help me?
+
+- intent: select_service
+  examples: |
+    - I want to select a service
+    - Show services
+    - What services do you offer?
+
+- intent: report_issue
+  examples: |
+    - Report a production issue
+    - Production issue
+    - Issue with production
+
+- intent: vm_provisioning
+  examples: |
+    - Cloud VM provisioning
+    - Request VM
+    - Provision VM
+
+- intent: onboarding
+  examples: |
+    - Application onboarding
+    - Onboard application
+    - New application setup
+
+- intent: capacity_planning
+  examples: |
+    - Capacity planning
+    - Plan capacity
+    - Scale application
+
+- intent: firewall_request
+  examples: |
+    - Firewall request
+    - Request firewall access
+    - Firewall setup
+
+- intent: shift_rota
+  examples: |
+    - Shift rota
+    - Rotation schedule
+    - Support shifts
+
+- intent: support_contacts
+  examples: |
+    - Support contacts
+    - Contact support
+    - How to reach support
