@@ -1,6 +1,13 @@
+version: "3.1"
+
 intents:
   - support
-  - select_service
+  - select_service_infrastructure
+  - select_service_application
+  - select_service_support
+  - inform_infrastructure
+  - inform_application
+  - inform_support
   - report_issue
   - vm_provisioning
   - onboarding
@@ -15,6 +22,9 @@ entities:
 slots:
   service:
     type: text
+    mappings:
+      - type: from_entity
+        entity: service
 
 actions:
   - action_greet
@@ -35,11 +45,11 @@ responses:
     - text: "How may I assist you? Please select below services which I offer."
       buttons:
         - title: "Infrastructure"
-          payload: "/select_service{\"service\": \"Infrastructure\"}"
+          payload: "/select_service_infrastructure{\"service\": \"Infrastructure\"}"
         - title: "Application"
-          payload: "/select_service{\"service\": \"Application\"}"
+          payload: "/select_service_application{\"service\": \"Application\"}"
         - title: "Support Documentation"
-          payload: "/select_service{\"service\": \"Support Documentation\"}"
+          payload: "/select_service_support{\"service\": \"Support Documentation\"}"
 
   utter_display_infrastructure_options:
     - text: "Please select an option for Infrastructure:"
@@ -71,4 +81,3 @@ responses:
 
   utter_default:
     - text: "I'm sorry, I didn't understand that. Can you please rephrase?"
-
