@@ -1,0 +1,47 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Service Selection",
+      "size": "medium",
+      "weight": "bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Please select a service:",
+      "wrap": true
+    },
+    {
+      "type": "ActionSet",
+      "actions": [
+        {
+          "type": "Action.Submit",
+          "title": "Infrastructure",
+          "data": {
+            "formAction": "selectService",
+            "selectedService": "Infrastructure"
+          }
+        },
+        {
+          "type": "Action.Submit",
+          "title": "Application",
+          "data": {
+            "formAction": "selectService",
+            "selectedService": "Application"
+          }
+        },
+        {
+          "type": "Action.Submit",
+          "title": "Support Documentation",
+          "data": {
+            "formAction": "selectService",
+            "selectedService": "Support Documentation"
+          }
+        }
+      ]
+    }
+  ]
+}
