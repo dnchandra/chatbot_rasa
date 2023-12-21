@@ -8,17 +8,11 @@
     - intent: select_service
       entities:
         - service: "Infrastructure"
-    - intent: inform
-      entities:
-        - service: "Infrastructure"
     - action: action_display_infrastructure_options
 
 - story: user selects Application
   steps:
     - intent: select_service
-      entities:
-        - service: "Application"
-    - intent: inform
       entities:
         - service: "Application"
     - action: action_display_application_options
@@ -28,6 +22,24 @@
     - intent: select_service
       entities:
         - service: "Support Documentation"
+    - action: action_display_support_docs_options
+
+- story: user informs about Infrastructure
+  steps:
+    - intent: inform
+      entities:
+        - service: "Infrastructure"
+    - action: action_display_infrastructure_options
+
+- story: user informs about Application
+  steps:
+    - intent: inform
+      entities:
+        - service: "Application"
+    - action: action_display_application_options
+
+- story: user informs about Support Documentation
+  steps:
     - intent: inform
       entities:
         - service: "Support Documentation"
