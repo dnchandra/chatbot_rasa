@@ -1,0 +1,74 @@
+intents:
+  - support
+  - select_service
+  - report_issue
+  - vm_provisioning
+  - onboarding
+  - capacity_planning
+  - firewall_request
+  - shift_rota
+  - support_contacts
+
+entities:
+  - service
+
+slots:
+  service:
+    type: text
+
+actions:
+  - action_greet
+  - action_ask_services
+  - action_display_infrastructure_options
+  - action_display_application_options
+  - action_display_support_docs_options
+  - action_report_production_issue
+  - action_cloud_vm_provisioning
+  - action_application_onboarding
+  - action_capacity_planning
+  - action_firewall_request
+  - action_shift_rota
+  - action_support_contacts
+
+responses:
+  utter_greet:
+    - text: "How may I assist you? Please select below services which I offer."
+      buttons:
+        - title: "Infrastructure"
+          payload: "/select_service{\"service\": \"Infrastructure\"}"
+        - title: "Application"
+          payload: "/select_service{\"service\": \"Application\"}"
+        - title: "Support Documentation"
+          payload: "/select_service{\"service\": \"Support Documentation\"}"
+
+  utter_display_infrastructure_options:
+    - text: "Please select an option for Infrastructure:"
+      buttons:
+        - title: "Report Production Issue"
+          payload: "/report_issue{\"service\": \"Infrastructure\"}"
+        - title: "Cloud VM Provisioning"
+          payload: "/vm_provisioning{\"service\": \"Infrastructure\"}"
+
+  utter_display_application_options:
+    - text: "Please select an option for Application:"
+      buttons:
+        - title: "Report Production Issue"
+          payload: "/report_issue{\"service\": \"Application\"}"
+        - title: "Application Onboarding"
+          payload: "/onboarding{\"service\": \"Application\"}"
+        - title: "Capacity Planning"
+          payload: "/capacity_planning{\"service\": \"Application\"}"
+        - title: "Firewall Request"
+          payload: "/firewall_request{\"service\": \"Application\"}"
+
+  utter_display_support_docs_options:
+    - text: "Please select an option for Support Documentation:"
+      buttons:
+        - title: "Shift Rota"
+          payload: "/shift_rota{\"service\": \"Support Documentation\"}"
+        - title: "Support Contacts"
+          payload: "/support_contacts{\"service\": \"Support Documentation\"}"
+
+  utter_default:
+    - text: "I'm sorry, I didn't understand that. Can you please rephrase?"
+
